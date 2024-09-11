@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d3abfa6-7f3d-4f7c-b82a-2b5cee2fd7e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6d3abfa6-7f3d-4f7c-b82a-2b5cee2fd7e7" name="Changes" comment="arrumar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arquiv.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arquiv.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoND.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoND.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDPeso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDPeso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDPesoRotulado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDPesoRotulado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDRotulado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDRotulado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoPeso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoPeso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoPesoRotulado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoPesoRotulado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoRotulado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoRotulado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TesteGrafoMatriz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TesteGrafoMatriz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +29,29 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
+    <option name="OPTIONS">
+      <set>
+        <option value="ALLOW_UNRELATED_HISTORIES" />
+      </set>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Hatz-D"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Hatz-D/Graphs.git",
+    "accountId": "a9547842-49cc-4ee6-b3ac-64d35bbabf23"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -55,6 +83,69 @@
       <option name="presentableId" value="Default" />
       <updated>1724446117560</updated>
     </task>
+    <task id="LOCAL-00001" summary="where">
+      <option name="closed" value="true" />
+      <created>1726087231860</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726087231860</updated>
+    </task>
+    <task id="LOCAL-00002" summary="where">
+      <option name="closed" value="true" />
+      <created>1726087286164</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726087286164</updated>
+    </task>
+    <task id="LOCAL-00003" summary="test">
+      <option name="closed" value="true" />
+      <created>1726088261192</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726088261192</updated>
+    </task>
+    <task id="LOCAL-00004" summary="test">
+      <option name="closed" value="true" />
+      <created>1726088401517</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726088401517</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test">
+      <option name="closed" value="true" />
+      <created>1726088476487</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726088476487</updated>
+    </task>
+    <task id="LOCAL-00006" summary="test">
+      <option name="closed" value="true" />
+      <created>1726088511477</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726088511477</updated>
+    </task>
+    <task id="LOCAL-00007" summary="arrumar">
+      <option name="closed" value="true" />
+      <created>1726089138413</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726089138413</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="where" />
+    <MESSAGE value="test" />
+    <MESSAGE value="arrumar" />
+    <option name="LAST_COMMIT_MESSAGE" value="arrumar" />
   </component>
 </project>

@@ -18,6 +18,7 @@ public class TGrafoPeso extends Grafo {
         // alocação da matriz do TGrafo
         this.adj = new int [n][n];
         this.pesos = new double[n];
+        this.nomes = new String[n];
 
         // Inicia a matriz com zeros
         for(int i = 0; i< n; i++) {
@@ -32,6 +33,7 @@ public class TGrafoPeso extends Grafo {
         this.adj = adj;
         this.n = adj.length;
         this.pesos = pesos;
+        this.nomes = new String[n];
         int count = 0;
 
         for(int i = 0; i < adj.length; ++i) {

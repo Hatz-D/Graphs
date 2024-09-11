@@ -11,6 +11,7 @@ public class TGrafoNDRotulado extends Grafo {
         this.m = 0;
         // alocação da matriz do TGrafo
         this.adj = new double[n][n];
+        this.nomes = new String[n];
         // Inicia a matriz com infinitos
         for(int i = 0; i< n; i++)
             for(int j = 0; j< n; j++)
@@ -20,6 +21,7 @@ public class TGrafoNDRotulado extends Grafo {
     public TGrafoNDRotulado(double[][] adj) {
         this.adj = adj;
         this.n = adj.length;
+        this.nomes = new String[n];
         int count = 0;
 
         for(int i = 0; i < adj.length; ++i) {

@@ -11,6 +11,7 @@ public class TGrafoND extends Grafo {
         this.m = 0;
         // alocação da matriz do TGrafo
         this.adj = new int [n][n];
+        this.nomes = new String[n];
         // Inicia a matriz com zeros
         for(int i = 0; i< n; i++)
             for(int j = 0; j< n; j++)
@@ -20,6 +21,7 @@ public class TGrafoND extends Grafo {
     public TGrafoND(int[][] adj) {
         this.adj = adj;
         this.n = adj.length;
+        this.nomes = new String[n];
         int count = 0;
         for(int i = 0; i < adj.length; ++i) {
             for(int j = i+1; j < adj.length; j++) {

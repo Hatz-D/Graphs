@@ -7,7 +7,8 @@ public class TesteGrafoMatriz {
 		Scanner scanner = new Scanner(System.in);
 		Scanner text = new Scanner(System.in);
 		Grafo grafo = null;
-		String menu = "\nSeja bem-vindo ao seu melhor roteiro de viagens!\n\n" +
+		String menu = "\n---------------------------------------------------------" +
+				"\nSeja bem-vindo ao seu melhor roteiro de viagens!\n\n" +
 				"1. Ler dados do arquivo\n" +
 				"2. Gravar dados no arquivo\n" +
 				"3. Inserir vértice\n" +
@@ -37,11 +38,21 @@ public class TesteGrafoMatriz {
 				}
 
 				case 2 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
 					String file = "arquiv.txt";
 					Projeto.gravarArquivo(grafo, file);
 				}
 
 				case 3 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
 					if(grafo instanceof TGrafoPeso || grafo instanceof TGrafoPesoRotulado || grafo instanceof TGrafoNDPeso || grafo instanceof TGrafoNDPesoRotulado) {
 						System.out.print("Insira o peso do novo vértice e o seu nome no formato: peso nome: ");
 						try {
@@ -49,7 +60,10 @@ public class TesteGrafoMatriz {
 							grafo.insereV(Double.parseDouble(vet[0]), vet[1]);
 						}
 
-						catch (Exception e) {System.out.println("\nSomente insira números no peso!");}
+						catch (Exception e) {
+							System.out.println("\nSomente insira números no peso!");
+							break;
+						}
 					}
 
 					else {
@@ -62,6 +76,11 @@ public class TesteGrafoMatriz {
 				}
 
 				case 4 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
 					if (grafo instanceof TGrafoRotulado || grafo instanceof TGrafoPesoRotulado || grafo instanceof TGrafoNDRotulado || grafo instanceof TGrafoNDPesoRotulado) {
 						System.out.print("\nInsira a aresta no formato: v1 v2 peso: ");
 
@@ -74,7 +93,10 @@ public class TesteGrafoMatriz {
 							grafo.insereA(v1, v2, peso);
 						}
 
-						catch(Exception e) {System.out.println("\nFormato incorreto inserido!");}
+						catch(Exception e) {
+							System.out.println("\nFormato incorreto inserido!");
+							break;
+						}
 					}
 
 					else {
@@ -88,7 +110,10 @@ public class TesteGrafoMatriz {
 							grafo.insereA(v1, v2);
 						}
 
-						catch (Exception e) {System.out.println("\nFormato incorreto inserido!");}
+						catch (Exception e) {
+							System.out.println("\nFormato incorreto inserido!");
+							break;
+						}
 					}
 
 					System.out.println("Aresta inserida com sucesso!");
@@ -96,19 +121,28 @@ public class TesteGrafoMatriz {
 				}
 
 				case 5 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
 					System.out.print("Insira o vértice a ser removido: ");
 
+					try {
 						int v = Integer.parseInt(text.nextLine());
 						grafo.removeV(v);
 						System.out.println("\nVértice removido com sucesso!");
+					}
 
-
-
-						System.out.println("\nFormato incorreto inserido!");
-
+					catch(Exception e) {System.out.println("\nFormato incorreto inserido!");}
 				}
 
 				case 6 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
 					System.out.print("\nInsira a aresta no formato: v1 v2: ");
 
 					try{
@@ -120,62 +154,69 @@ public class TesteGrafoMatriz {
 						System.out.println("Aresta removida com sucesso!");
 						grafo.show();
 					}
-					catch(Exception e){
-						System.out.println("\nFormato incorreto inserido!");
-					}
+					catch(Exception e){System.out.println("\nFormato incorreto inserido!");}
 				}
 
-				case 7 -> {
-					grafo = Projeto.lerArquivo("grafo.txt");
-					grafo.show();
+				case 7 -> { // TODO perguntar como?
+					Grafo aux;
+					aux = Projeto.lerArquivo("grafo.txt");
+					aux.show();
 
-					if(grafo instanceof TGrafoND) {
+					if(aux instanceof TGrafoND) {
 						System.out.println("\nGrafo não orientado sem peso");
 					}
 
-					else if(grafo instanceof TGrafoNDPeso) {
+					else if(aux instanceof TGrafoNDPeso) {
 						System.out.println("\nGrafo não orientado com peso no vértice");
 					}
 
-					else if(grafo instanceof TGrafoNDRotulado) {
+					else if(aux instanceof TGrafoNDRotulado) {
 						System.out.println("\nGrafo não orientado com peso na aresta");
 					}
 
-					else if(grafo instanceof TGrafoNDPesoRotulado) {
+					else if(aux instanceof TGrafoNDPesoRotulado) {
 						System.out.println("\nGrafo não orientado com peso no vértice e na aresta");
 					}
 
-					else if(grafo instanceof TGrafo) {
+					else if(aux instanceof TGrafo) {
 						System.out.println("\nGrafo orientado sem peso");
 					}
 
-					else if(grafo instanceof TGrafoPeso) {
+					else if(aux instanceof TGrafoPeso) {
 						System.out.println("\nGrafo orientado com peso no vértice");
 					}
 
-					else if(grafo instanceof TGrafoRotulado) {
+					else if(aux instanceof TGrafoRotulado) {
 						System.out.println("\nGrafo orientado com peso na aresta");
 					}
 
-					else if(grafo instanceof TGrafoPesoRotulado) {
+					else if(aux instanceof TGrafoPesoRotulado) {
 						System.out.println("\nGrafo orientado com peso no vértice e na aresta");
 					}
 				}
 
 				case 8 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
 					System.out.println("Imprimindo o grafo...\n");
 					grafo.show();
 					System.out.println("\nClasse: " + grafo.getClass().getName());
 				}
 
 				case 9 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
 					if(grafo instanceof TGrafoND || grafo instanceof TGrafoNDPeso || grafo instanceof TGrafoNDPesoRotulado || grafo instanceof TGrafoNDRotulado) {
 						System.out.println("\nConexidade do grafo: " + grafo.conectividadade() + (grafo.conectividadade() == 0 ? " - Conexo" : " - Não Conexo"));
 					}
 
 					else {
-						System.out.print("\nConexidade do grafo: ");
-
 						int n = -1;
 
 						if(grafo instanceof TGrafo) {
@@ -198,21 +239,23 @@ public class TesteGrafoMatriz {
 							((TGrafoPesoRotulado)grafo).grafoReduzido().show();
 						}
 
+						System.out.print("\nConexidade do grafo: ");
+
 						switch(n) {
 							case 0 -> {
-								System.out.println(" Não Conexo");
+								System.out.print(" Não Conexo");
 							}
 
 							case 1 -> {
-								System.out.println(" Simplesmente Conexo");
+								System.out.print(" Simplesmente Conexo");
 							}
 
 							case 2 -> {
-								System.out.println(" Semi-Fortemente Conexo");
+								System.out.print(" Semi-Fortemente Conexo");
 							}
 
 							case 3 -> {
-								System.out.println(" Fortemente Conexo");
+								System.out.print(" Fortemente Conexo");
 							}
 						}
 					}
