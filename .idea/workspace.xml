@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d3abfa6-7f3d-4f7c-b82a-2b5cee2fd7e7" name="Changes" comment="arrumar">
+    <list default="true" id="6d3abfa6-7f3d-4f7c-b82a-2b5cee2fd7e7" name="Changes" comment="fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arquiv.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arquiv.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/Grafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/Grafo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/Projeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/Projeto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoND.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoND.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDPeso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GrafoMatriz/TGrafoNDPeso.java" afterDir="false" />
@@ -139,13 +140,22 @@
       <option name="project" value="LOCAL" />
       <updated>1726089138413</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1726090829082</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1726090829082</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="where" />
     <MESSAGE value="test" />
     <MESSAGE value="arrumar" />
-    <option name="LAST_COMMIT_MESSAGE" value="arrumar" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
 </project>
