@@ -7,7 +7,6 @@ public class TesteGrafoMatriz {
 		Scanner scanner = new Scanner(System.in);
 		Scanner text = new Scanner(System.in);
 		Grafo grafo = null;
-		Grafo teste;
 		String menu = "\nSeja bem-vindo ao seu melhor roteiro de viagens!\n\n" +
 				"1. Ler dados do arquivo\n" +
 				"2. Gravar dados no arquivo\n" +
@@ -32,7 +31,7 @@ public class TesteGrafoMatriz {
 			}
 
 			switch (opcao) {
-				case 1 -> { //TODO Tem que automatizar a leitura de todos os tipos de grafos?
+				case 1 -> {
 					grafo = Projeto.lerArquivo("grafo.txt");
 					grafo.show();
 				}
