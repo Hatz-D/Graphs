@@ -256,19 +256,19 @@ public class TesteGrafoMatriz {
 
 						switch(n) {
 							case 0 -> {
-								System.out.print(" Não Conexo");
+								System.out.print(" C0 - Não Conexo");
 							}
 
 							case 1 -> {
-								System.out.print(" Simplesmente Conexo");
+								System.out.print(" C1 - Simplesmente Conexo");
 							}
 
 							case 2 -> {
-								System.out.print(" Semi-Fortemente Conexo");
+								System.out.print(" C2 - Semi-Fortemente Conexo");
 							}
 
 							case 3 -> {
-								System.out.print(" Fortemente Conexo");
+								System.out.print(" C3 - Fortemente Conexo");
 							}
 						}
 					}
