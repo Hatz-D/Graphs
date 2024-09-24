@@ -170,7 +170,7 @@ public class TesteGrafoMatriz {
 					catch(Exception e){System.out.println("\nFormato incorreto inserido!");}
 				}
 
-				case 7 -> { // TODO perguntar como?
+				case 7 -> {
 					Grafo aux;
 					aux = Projeto.lerArquivo("grafo.txt");
 					aux.show();
@@ -255,30 +255,20 @@ public class TesteGrafoMatriz {
 						System.out.print("\nConexidade do grafo: ");
 
 						switch(n) {
-							case 0 -> {
-								System.out.print(" C0 - Não Conexo");
-							}
+							case 0 -> System.out.print(" C0 - Não Conexo");
 
-							case 1 -> {
-								System.out.print(" C1 - Simplesmente Conexo");
-							}
+							case 1 -> System.out.print(" C1 - Simplesmente Conexo");
 
-							case 2 -> {
-								System.out.print(" C2 - Semi-Fortemente Conexo");
-							}
+							case 2 -> System.out.print(" C2 - Semi-Fortemente Conexo");
 
-							case 3 -> {
-								System.out.print(" C3 - Fortemente Conexo");
-							}
+							case 3 -> System.out.print(" C3 - Fortemente Conexo");
 						}
 					}
 				}
 
 				case 10 -> {}
 
-				default -> {
-					System.out.println("\nOpção inválida inserida!");
-				}
+				default -> System.out.println("\nOpção inválida inserida!");
 			}
 		}
 	}
