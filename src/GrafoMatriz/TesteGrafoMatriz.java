@@ -1,6 +1,7 @@
 /*
-Diogo Lourenzon Hatz     - 10402406
-Nicolas Fernandes Melnik - 10402170
+Diogo Lourenzon Hatz     - RA: 10402406
+Eduardo Marui de Camargo - RA: 10400734
+Nicolas Fernandes Melnik - RA: 10402170
 
 Classe: Main do programa, contém lógica do menu, seleção de opções e filtro de entrada
 
@@ -9,9 +10,11 @@ Mudanças:
 - Separação das classes de grafo em classes distintas e criação de classe abstrata Grafos- Diogo Hatz, 11/09/2024
 - Criação da classe Projeto para métodos de manipulação de arquivos - Diogo Hatz, 11/09/2024
 - Garantir consistência dos métodos das classes dos grafos - Nicolas Melnik 13/09/2024
+- Adicionando mapeamento da europa no arquivo grafo.txt - Nicolas Melnik e Eduardo Marui 24/09/2024
 */
 
 package GrafoMatriz;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -35,12 +38,11 @@ public class TesteGrafoMatriz {
 
 		int opcao = -1;
 
-		while(opcao != 10) {
+		while (opcao != 10) {
 			System.out.print(menu + "\nInsira uma opção: ");
-			try{
+			try {
 				opcao = Integer.parseInt(scanner.nextLine());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				opcao = -1;
 			}
 
@@ -51,7 +53,7 @@ public class TesteGrafoMatriz {
 				}
 
 				case 2 -> {
-					if(grafo == null) {
+					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
 					}
@@ -61,12 +63,13 @@ public class TesteGrafoMatriz {
 				}
 
 				case 3 -> {
-					if(grafo == null) {
+					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
 					}
 
-					if(grafo instanceof TGrafoPeso || grafo instanceof TGrafoPesoRotulado || grafo instanceof TGrafoNDPeso || grafo instanceof TGrafoNDPesoRotulado) {
+					if (grafo instanceof TGrafoPeso || grafo instanceof TGrafoPesoRotulado
+							|| grafo instanceof TGrafoNDPeso || grafo instanceof TGrafoNDPesoRotulado) {
 						System.out.print("Insira o peso do novo vértice e o seu nome no formato: peso nome: ");
 						try {
 							String[] vet = text.nextLine().strip().split(" ");
@@ -89,12 +92,13 @@ public class TesteGrafoMatriz {
 				}
 
 				case 4 -> {
-					if(grafo == null) {
+					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
 					}
 
-					if (grafo instanceof TGrafoRotulado || grafo instanceof TGrafoPesoRotulado || grafo instanceof TGrafoNDRotulado || grafo instanceof TGrafoNDPesoRotulado) {
+					if (grafo instanceof TGrafoRotulado || grafo instanceof TGrafoPesoRotulado
+							|| grafo instanceof TGrafoNDRotulado || grafo instanceof TGrafoNDPesoRotulado) {
 						System.out.print("\nInsira a aresta no formato: v1 v2 peso: ");
 
 						try {
@@ -106,7 +110,7 @@ public class TesteGrafoMatriz {
 							grafo.insereA(v1, v2, peso);
 						}
 
-						catch(Exception e) {
+						catch (Exception e) {
 							System.out.println("\nFormato incorreto inserido!");
 							break;
 						}
@@ -134,7 +138,7 @@ public class TesteGrafoMatriz {
 				}
 
 				case 5 -> {
-					if(grafo == null) {
+					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
 					}
@@ -147,18 +151,20 @@ public class TesteGrafoMatriz {
 						System.out.println("\nVértice removido com sucesso!");
 					}
 
-					catch(Exception e) {System.out.println("\nFormato incorreto inserido!");}
+					catch (Exception e) {
+						System.out.println("\nFormato incorreto inserido!");
+					}
 				}
 
 				case 6 -> {
-					if(grafo == null) {
+					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
 					}
 
 					System.out.print("\nInsira a aresta no formato: v1 v2: ");
 
-					try{
+					try {
 						String[] line = text.nextLine().split(" ");
 						int v1 = Integer.parseInt(line[0]);
 						int v2 = Integer.parseInt(line[1]);
@@ -166,8 +172,9 @@ public class TesteGrafoMatriz {
 						grafo.removeA(v1, v2);
 						System.out.println("Aresta removida com sucesso!");
 						grafo.show();
+					} catch (Exception e) {
+						System.out.println("\nFormato incorreto inserido!");
 					}
-					catch(Exception e){System.out.println("\nFormato incorreto inserido!");}
 				}
 
 				case 7 -> {
@@ -175,41 +182,41 @@ public class TesteGrafoMatriz {
 					aux = Projeto.lerArquivo("grafo.txt");
 					aux.show();
 
-					if(aux instanceof TGrafoND) {
+					if (aux instanceof TGrafoND) {
 						System.out.println("\nGrafo não orientado sem peso");
 					}
 
-					else if(aux instanceof TGrafoNDPeso) {
+					else if (aux instanceof TGrafoNDPeso) {
 						System.out.println("\nGrafo não orientado com peso no vértice");
 					}
 
-					else if(aux instanceof TGrafoNDRotulado) {
+					else if (aux instanceof TGrafoNDRotulado) {
 						System.out.println("\nGrafo não orientado com peso na aresta");
 					}
 
-					else if(aux instanceof TGrafoNDPesoRotulado) {
+					else if (aux instanceof TGrafoNDPesoRotulado) {
 						System.out.println("\nGrafo não orientado com peso no vértice e na aresta");
 					}
 
-					else if(aux instanceof TGrafo) {
+					else if (aux instanceof TGrafo) {
 						System.out.println("\nGrafo orientado sem peso");
 					}
 
-					else if(aux instanceof TGrafoPeso) {
+					else if (aux instanceof TGrafoPeso) {
 						System.out.println("\nGrafo orientado com peso no vértice");
 					}
 
-					else if(aux instanceof TGrafoRotulado) {
+					else if (aux instanceof TGrafoRotulado) {
 						System.out.println("\nGrafo orientado com peso na aresta");
 					}
 
-					else if(aux instanceof TGrafoPesoRotulado) {
+					else if (aux instanceof TGrafoPesoRotulado) {
 						System.out.println("\nGrafo orientado com peso no vértice e na aresta");
 					}
 				}
 
 				case 8 -> {
-					if(grafo == null) {
+					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
 					}
@@ -220,41 +227,43 @@ public class TesteGrafoMatriz {
 				}
 
 				case 9 -> {
-					if(grafo == null) {
+					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
 					}
 
-					if(grafo instanceof TGrafoND || grafo instanceof TGrafoNDPeso || grafo instanceof TGrafoNDPesoRotulado || grafo instanceof TGrafoNDRotulado) {
-						System.out.println("\nConexidade do grafo: " + grafo.conectividadade() + (grafo.conectividadade() == 0 ? " - Conexo" : " - Não Conexo"));
+					if (grafo instanceof TGrafoND || grafo instanceof TGrafoNDPeso
+							|| grafo instanceof TGrafoNDPesoRotulado || grafo instanceof TGrafoNDRotulado) {
+						System.out.println("\nConexidade do grafo: " + grafo.conectividadade()
+								+ (grafo.conectividadade() == 0 ? " - Conexo" : " - Não Conexo"));
 					}
 
 					else {
 						int n = -1;
 
-						if(grafo instanceof TGrafo) {
-							n = ((TGrafo)grafo).grauConexidade();
-							((TGrafo)grafo).grafoReduzido().show();
+						if (grafo instanceof TGrafo) {
+							n = ((TGrafo) grafo).grauConexidade();
+							((TGrafo) grafo).grafoReduzido().show();
 						}
 
-						else if(grafo instanceof TGrafoPeso) {
-							n = ((TGrafoPeso)grafo).grauConexidade();
-							((TGrafoPeso)grafo).grafoReduzido().show();
+						else if (grafo instanceof TGrafoPeso) {
+							n = ((TGrafoPeso) grafo).grauConexidade();
+							((TGrafoPeso) grafo).grafoReduzido().show();
 						}
 
-						else if(grafo instanceof TGrafoRotulado) {
-							n = ((TGrafoRotulado)grafo).grauConexidade();
-							((TGrafoRotulado)grafo).grafoReduzido().show();
+						else if (grafo instanceof TGrafoRotulado) {
+							n = ((TGrafoRotulado) grafo).grauConexidade();
+							((TGrafoRotulado) grafo).grafoReduzido().show();
 						}
 
-						else if(grafo instanceof TGrafoPesoRotulado) {
-							n = ((TGrafoPesoRotulado)grafo).grauConexidade();
-							((TGrafoPesoRotulado)grafo).grafoReduzido().show();
+						else if (grafo instanceof TGrafoPesoRotulado) {
+							n = ((TGrafoPesoRotulado) grafo).grauConexidade();
+							((TGrafoPesoRotulado) grafo).grafoReduzido().show();
 						}
 
 						System.out.print("\nConexidade do grafo: ");
 
-						switch(n) {
+						switch (n) {
 							case 0 -> System.out.print(" C0 - Não Conexo");
 
 							case 1 -> System.out.print(" C1 - Simplesmente Conexo");
@@ -266,7 +275,8 @@ public class TesteGrafoMatriz {
 					}
 				}
 
-				case 10 -> {}
+				case 10 -> {
+				}
 
 				default -> System.out.println("\nOpção inválida inserida!");
 			}
