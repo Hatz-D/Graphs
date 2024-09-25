@@ -23,8 +23,8 @@ public class TesteGrafoMatriz {
 		Scanner scanner = new Scanner(System.in);
 		Scanner text = new Scanner(System.in);
 		Grafo grafo = null;
-		String menu = "\n---------------------------------------------------------" +
-				"\nSeja bem-vindo ao seu melhor roteiro de viagens!\n\n" +
+		String menu = "\nMapa das Capitais Europeias: Distâncias por Rotas de Carro" +
+				"\n------------------------------------------------------------\n\n" +
 				"1. Ler dados do arquivo\n" +
 				"2. Gravar dados no arquivo\n" +
 				"3. Inserir vértice\n" +
