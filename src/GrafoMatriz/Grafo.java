@@ -11,6 +11,7 @@ Mudanças:
 - Criação da classe Projeto para métodos de manipulação de arquivos - Diogo Hatz, 11/09/2024
 - Garantir consistência dos métodos das classes dos grafos - Nicolas Melnik 13/09/2024
 - Adicionando mapeamento da europa no arquivo grafo.txt - Nicolas Melnik e Eduardo Marui 24/09/2024
+-Adicionando relatório e README do projeto - Nicolas Melnik e Eduardo Marui 25/09/2024
 */
 
 package GrafoMatriz;
