@@ -1,6 +1,7 @@
 /*
-Diogo Lourenzon Hatz     - 10402406
-Nicolas Fernandes Melnik - 10402170
+Diogo Lourenzon Hatz     - RA: 10402406
+Eduardo Marui de Camargo - RA: 10400734
+Nicolas Fernandes Melnik - RA: 10402170
 
 Classe: Contém métodos estáticos para leitura e gravação dos arquivos
 
@@ -9,6 +10,8 @@ Mudanças:
 - Separação das classes de grafo em classes distintas e criação de classe abstrata Grafos- Diogo Hatz, 11/09/2024
 - Criação da classe Projeto para métodos de manipulação de arquivos - Diogo Hatz, 11/09/2024
 - Garantir consistência dos métodos das classes dos grafos - Nicolas Melnik 13/09/2024
+- Adicionando mapeamento da europa no arquivo grafo.txt - Nicolas Melnik e Eduardo Marui 24/09/2024
+- Adicionando relatório e README do projeto - Nicolas Melnik e Eduardo Marui 25/09/2024
 */
 
 package GrafoMatriz;
@@ -16,15 +19,17 @@ package GrafoMatriz;
 import java.io.*;
 import java.util.Scanner;
 
-public class Projeto{
+public class Projeto {
     public static Grafo lerArquivo(String file_path) {
         File file = new File(file_path);
         Grafo grafo = null;
         Scanner scanner;
 
-        try{scanner = new Scanner(file);}
+        try {
+            scanner = new Scanner(file);
+        }
 
-        catch(FileNotFoundException e) {
+        catch (FileNotFoundException e) {
             System.out.println("\nArquivo não encontado!");
             return null;
         }
@@ -34,19 +39,21 @@ public class Projeto{
 
         String[] nomes = new String[v];
 
-        switch(tipo) {
+        switch (tipo) {
             case 0 -> {
                 int[][] adj = new int[v][v];
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
-                    if(array.length > 1) {nomes[prim] = array[1];}
+                    if (array.length > 1) {
+                        nomes[prim] = array[1];
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -63,16 +70,18 @@ public class Projeto{
                 int[][] adj = new int[v][v];
                 double[] pesos = new double[v];
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     nomes[prim] = array[1];
-                    if(array.length > 2) {pesos[i] = Double.parseDouble(array[2]);}
+                    if (array.length > 2) {
+                        pesos[i] = Double.parseDouble(array[2]);
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -88,21 +97,23 @@ public class Projeto{
             case 2 -> {
                 double[][] adj = new double[v][v];
 
-                for(int i = 0; i < v; ++i) {
-                    for(int j = 0; j < v; ++j) {
+                for (int i = 0; i < v; ++i) {
+                    for (int j = 0; j < v; ++j) {
                         adj[i][j] = Double.POSITIVE_INFINITY;
                     }
                 }
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
-                    if(array.length > 1) {nomes[prim] = array[1];}
+                    if (array.length > 1) {
+                        nomes[prim] = array[1];
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -120,22 +131,24 @@ public class Projeto{
                 double[][] adj = new double[v][v];
                 double[] pesos = new double[v];
 
-                for(int i = 0; i < v; ++i) {
-                    for(int j = 0; j < v; ++j) {
+                for (int i = 0; i < v; ++i) {
+                    for (int j = 0; j < v; ++j) {
                         adj[i][j] = Double.POSITIVE_INFINITY;
                     }
                 }
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     nomes[prim] = array[1];
-                    if(array.length > 2) {pesos[i] = Double.parseDouble(array[2]);}
+                    if (array.length > 2) {
+                        pesos[i] = Double.parseDouble(array[2]);
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -152,15 +165,17 @@ public class Projeto{
             case 4 -> {
                 int[][] adj = new int[v][v];
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
-                    if(array.length > 1) {nomes[prim] = array[1];}
+                    if (array.length > 1) {
+                        nomes[prim] = array[1];
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -176,16 +191,18 @@ public class Projeto{
                 int[][] adj = new int[v][v];
                 double[] pesos = new double[v];
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     nomes[prim] = array[1];
-                    if(array.length > 2) {pesos[i] = Double.parseDouble(array[2]);}
+                    if (array.length > 2) {
+                        pesos[i] = Double.parseDouble(array[2]);
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -200,21 +217,23 @@ public class Projeto{
             case 6 -> {
                 double[][] adj = new double[v][v];
 
-                for(int i = 0; i < v; ++i) {
-                    for(int j = 0; j < v; ++j) {
+                for (int i = 0; i < v; ++i) {
+                    for (int j = 0; j < v; ++j) {
                         adj[i][j] = Double.POSITIVE_INFINITY;
                     }
                 }
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
-                    if(array.length > 1) {nomes[prim] = array[1];}
+                    if (array.length > 1) {
+                        nomes[prim] = array[1];
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -231,22 +250,24 @@ public class Projeto{
                 double[][] adj = new double[v][v];
                 double[] pesos = new double[v];
 
-                for(int i = 0; i < v; ++i) {
-                    for(int j = 0; j < v; ++j) {
+                for (int i = 0; i < v; ++i) {
+                    for (int j = 0; j < v; ++j) {
                         adj[i][j] = Double.POSITIVE_INFINITY;
                     }
                 }
 
-                for(int i = 0; i < v; ++i) {
+                for (int i = 0; i < v; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     nomes[prim] = array[1];
-                    if(array.length > 2) {pesos[i] = Double.parseDouble(array[2]);}
+                    if (array.length > 2) {
+                        pesos[i] = Double.parseDouble(array[2]);
+                    }
                 }
 
                 int a = Integer.parseInt(scanner.nextLine().strip());
 
-                for(int i = 0; i < a; ++i) {
+                for (int i = 0; i < a; ++i) {
                     String[] array = scanner.nextLine().strip().split(" ");
                     int prim = Integer.parseInt(array[0]);
                     int sec = Integer.parseInt(array[1]);
@@ -272,141 +293,143 @@ public class Projeto{
     public static void gravarArquivo(Grafo grafo, String file_path) throws IOException {
         BufferedWriter writter = new BufferedWriter(new FileWriter(file_path));
 
-        if(grafo instanceof TGrafoND) {
+        if (grafo instanceof TGrafoND) {
             writter.write("0\n");
         }
 
-        else if(grafo instanceof TGrafoNDPeso) {
+        else if (grafo instanceof TGrafoNDPeso) {
             writter.write("1\n");
         }
 
-        else if(grafo instanceof TGrafoNDRotulado) {
+        else if (grafo instanceof TGrafoNDRotulado) {
             writter.write("2\n");
         }
 
-        else if(grafo instanceof TGrafoNDPesoRotulado) {
+        else if (grafo instanceof TGrafoNDPesoRotulado) {
             writter.write("3\n");
         }
 
-        else if(grafo instanceof TGrafo) {
+        else if (grafo instanceof TGrafo) {
             writter.write("4\n");
         }
 
-        else if(grafo instanceof TGrafoPeso) {
+        else if (grafo instanceof TGrafoPeso) {
             writter.write("5\n");
         }
 
-        else if(grafo instanceof TGrafoRotulado) {
+        else if (grafo instanceof TGrafoRotulado) {
             writter.write("6\n");
         }
 
-        else if(grafo instanceof TGrafoPesoRotulado) {
+        else if (grafo instanceof TGrafoPesoRotulado) {
             writter.write("7\n");
         }
 
         int n = grafo.getN();
         int m = grafo.getM();
         String[] nomes = grafo.getNomes();
-        writter.write(n+"\n");
+        writter.write(n + "\n");
 
-        for(int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i) {
             writter.write(i + " " + nomes[i]);
-            if(grafo instanceof TGrafoNDPeso) {
-                double[] pesos = ((TGrafoNDPeso)grafo).getPesos();
+            if (grafo instanceof TGrafoNDPeso) {
+                double[] pesos = ((TGrafoNDPeso) grafo).getPesos();
                 writter.write(" " + pesos[i] + "\n");
             }
 
-            else if(grafo instanceof TGrafoNDPesoRotulado) {
-                double[] pesos = ((TGrafoNDPesoRotulado)grafo).getPesos();
+            else if (grafo instanceof TGrafoNDPesoRotulado) {
+                double[] pesos = ((TGrafoNDPesoRotulado) grafo).getPesos();
                 writter.write(" " + pesos[i] + "\n");
             }
 
-            else if(grafo instanceof TGrafoPeso) {
-                double[] pesos = ((TGrafoPeso)grafo).getPesos();
+            else if (grafo instanceof TGrafoPeso) {
+                double[] pesos = ((TGrafoPeso) grafo).getPesos();
                 writter.write(" " + pesos[i] + "\n");
             }
 
-            else if(grafo instanceof TGrafoPesoRotulado) {
-                double[] pesos = ((TGrafoPesoRotulado)grafo).getPesos();
+            else if (grafo instanceof TGrafoPesoRotulado) {
+                double[] pesos = ((TGrafoPesoRotulado) grafo).getPesos();
                 writter.write(" " + pesos[i] + "\n");
             }
 
-            else {writter.write("\n");}
+            else {
+                writter.write("\n");
+            }
         }
 
-        writter.write(m+"\n");
+        writter.write(m + "\n");
 
-        if(grafo instanceof TGrafoND) {
+        if (grafo instanceof TGrafoND) {
             int[][] adj = ((TGrafoND) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = i+1; j < n; ++j) {
-                    if(adj[i][j] != 0) {
-                        writter.write(i + " " + j +"\n");
-                    }
-                }
-            }
-        }
-
-        else if(grafo instanceof TGrafoNDPeso) {
-            int[][] adj = ((TGrafoNDPeso) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = i+1; j < n; ++j) {
-                    if(adj[i][j] != 0) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = i + 1; j < n; ++j) {
+                    if (adj[i][j] != 0) {
                         writter.write(i + " " + j + "\n");
                     }
                 }
             }
         }
 
-        else if(grafo instanceof TGrafoNDRotulado) {
+        else if (grafo instanceof TGrafoNDPeso) {
+            int[][] adj = ((TGrafoNDPeso) grafo).getAdj();
+            for (int i = 0; i < n; ++i) {
+                for (int j = i + 1; j < n; ++j) {
+                    if (adj[i][j] != 0) {
+                        writter.write(i + " " + j + "\n");
+                    }
+                }
+            }
+        }
+
+        else if (grafo instanceof TGrafoNDRotulado) {
             double[][] adj = ((TGrafoNDRotulado) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = i+1; j < n; ++j) {
-                    if(adj[i][j] != Double.POSITIVE_INFINITY) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = i + 1; j < n; ++j) {
+                    if (adj[i][j] != Double.POSITIVE_INFINITY) {
                         writter.write(i + " " + j + " " + adj[i][j] + "\n");
                     }
                 }
             }
         }
 
-        else if(grafo instanceof TGrafoNDPesoRotulado) {
+        else if (grafo instanceof TGrafoNDPesoRotulado) {
             double[][] adj = ((TGrafoNDPesoRotulado) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = i+1; j < n; ++j) {
-                    if(adj[i][j] != Double.POSITIVE_INFINITY) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = i + 1; j < n; ++j) {
+                    if (adj[i][j] != Double.POSITIVE_INFINITY) {
                         writter.write(i + " " + j + " " + adj[i][j] + "\n");
                     }
                 }
             }
         }
 
-        else if(grafo instanceof TGrafo) {
+        else if (grafo instanceof TGrafo) {
             int[][] adj = ((TGrafo) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = 0; j < n; ++j) {
-                    if(adj[i][j] != 0) {
-                        writter.write(i + " " + j +"\n");
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (adj[i][j] != 0) {
+                        writter.write(i + " " + j + "\n");
                     }
                 }
             }
         }
 
-        else if(grafo instanceof TGrafoPeso) {
+        else if (grafo instanceof TGrafoPeso) {
             int[][] adj = ((TGrafoPeso) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = 0; j < n; ++j) {
-                    if(adj[i][j] != 0) {
-                        writter.write(i + " " + j +"\n");
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (adj[i][j] != 0) {
+                        writter.write(i + " " + j + "\n");
                     }
                 }
             }
         }
 
-        else if(grafo instanceof TGrafoRotulado) {
+        else if (grafo instanceof TGrafoRotulado) {
             double[][] adj = ((TGrafoRotulado) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = 0; j < n; ++j) {
-                    if(adj[i][j] != Double.POSITIVE_INFINITY) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (adj[i][j] != Double.POSITIVE_INFINITY) {
                         writter.write(i + " " + j + " " + adj[i][j] + "\n");
                     }
                 }
@@ -414,11 +437,11 @@ public class Projeto{
 
         }
 
-        else if(grafo instanceof TGrafoPesoRotulado) {
+        else if (grafo instanceof TGrafoPesoRotulado) {
             double[][] adj = ((TGrafoPesoRotulado) grafo).getAdj();
-            for(int i = 0; i < n; ++i) {
-                for(int j = 0; j < n; ++j) {
-                    if(adj[i][j] != Double.POSITIVE_INFINITY) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (adj[i][j] != Double.POSITIVE_INFINITY) {
                         writter.write(i + " " + j + " " + adj[i][j] + "\n");
                     }
                 }
