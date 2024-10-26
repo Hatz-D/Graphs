@@ -42,6 +42,16 @@ public abstract class Grafo {
         this.nomes = nomes;
     }
 
+    public int getIndexFromName(String name) {
+        for(int i = 0; i < n; ++i) {
+            if(nomes[i].equals(name)) {return i;}
+        }
+
+        return -1;
+    }
+
+    public String getNameFromIndex(int i) {return nomes[i];}
+
     public void show() {}
 
     public void insereV() {}

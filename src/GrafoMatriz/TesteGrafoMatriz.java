@@ -31,11 +31,12 @@ public class TesteGrafoMatriz {
 				"7. Mostrar conteúdo do arquivo\n" +
 				"8. Mostrar grafo\n" +
 				"9. Apresentar a conexidade do grafo\n" +
-				"10. Encerrar a aplicação\n";
+				"10. Roteiro de viagem\n" +
+				"11. Encerrar a aplicação\n";
 
 		int opcao = -1;
 
-		while(opcao != 10) {
+		while(opcao != 11) {
 			System.out.print(menu + "\nInsira uma opção: ");
 			try{
 				opcao = Integer.parseInt(scanner.nextLine());
@@ -266,7 +267,16 @@ public class TesteGrafoMatriz {
 					}
 				}
 
-				case 10 -> {}
+				case 10 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
+
+				}
+
+				case 11 -> {}
 
 				default -> System.out.println("\nOpção inválida inserida!");
 			}

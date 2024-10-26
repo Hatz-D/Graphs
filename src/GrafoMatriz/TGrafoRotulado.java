@@ -15,6 +15,8 @@ package GrafoMatriz;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TGrafoRotulado extends Grafo{
@@ -434,5 +436,86 @@ public class TGrafoRotulado extends Grafo{
         this.n = newN;
         this.adj = newAdj;
         this.nomes = newNomes;
+    }
+
+    public int[] dijkstra(int origem) {
+        double[] dist = new double[n];
+        boolean[] visitado = new boolean[n];
+        int[] rota = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            dist[i] = Integer.MAX_VALUE;
+            rota[i] = -1;
+        }
+
+        dist[origem] = 0;
+
+        for (int k = 0; k < n - 1; k++) {
+            int u = minDistance(dist, visitado);
+            visitado[u] = true;
+            for (int v = 0; v < n; v++) {
+                if (!visitado[v] && adj[u][v] != Double.POSITIVE_INFINITY && dist[u] != Integer.MAX_VALUE && dist[u] + adj[u][v] < dist[v]) {
+                    dist[v] = dist[u] + adj[u][v];
+                    rota[v] = u;
+                    System.out.println();
+                }
+            }
+        }
+
+        printSolution(dist, rota, origem);
+        return rota;
+    }
+
+    private int minDistance(double[] dist, boolean[] visitado) {
+        double min = Integer.MAX_VALUE;
+        int minIndex = -1;
+        for (int v = 0; v < n; v++) {
+            if (!visitado[v] && dist[v] <= min) {
+                min = dist[v];
+                minIndex = v;
+            }
+        }
+        return minIndex;
+    }
+
+    private void printSolution(double[] dist, int[] rota, int origem) {
+        System.out.println("Vértice\t Distância da Origem\t Rota");
+        for (int i = 0; i < dist.length; i++) {
+            System.out.print(i + "\t\t " + dist[i] + "\t\t\t\t\t");
+            printPath(i, rota);
+            System.out.println();
+        }
+    }
+
+    private void printPath(int i, int[] rota) {
+        if (rota[i] == -1) {
+            System.out.print(i);
+            return;
+        }
+        printPath(rota[i], rota);
+        System.out.print(" -> " + i);
+    }
+
+    public void roteiro(String[] vet) {
+        List<String> nodes = new ArrayList<String>();
+
+        for(int i = 0; i < vet.length; ++i) {
+            int[] rota = dijkstra(getIndexFromName(vet[i]));
+
+
+        }
+
+    }
+
+    private List<String> roteiroAux(List<String> nodes, int[] rota, int i) {
+        if(rota[i] == -1) {
+            if(!nodes.contains(getNameFromIndex(i))) {
+                nodes.add(getNameFromIndex(i));
+            }
+
+            return nodes;
+        }
+
+
     }
 }
