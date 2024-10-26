@@ -1,17 +1,25 @@
 /*
-Diogo Lourenzon Hatz     - 10402406
-Nicolas Fernandes Melnik - 10402170
+Diogo Lourenzon Hatz     - RA: 10402406
+Eduardo Marui de Camargo - RA: 10400734
+Nicolas Fernandes Melnik - RA: 10402170
 
-Classe: Classe abstrata das classes de grafo, utilizada para polimorfismo
+Classe: Classe relativa ao grafo direcionado com peso nas arestas
 
 Mudanças:
 - Versão inicial da main da aplicação, como menu de opções - Diogo Hatz, 10/09/2024
 - Separação das classes de grafo em classes distintas e criação de classe abstrata Grafos- Diogo Hatz, 11/09/2024
 - Criação da classe Projeto para métodos de manipulação de arquivos - Diogo Hatz, 11/09/2024
 - Garantir consistência dos métodos das classes dos grafos - Nicolas Melnik 13/09/2024
+- Adicionando mapeamento da europa no arquivo grafo.txt - Nicolas Melnik e Eduardo Marui 24/09/2024
+- Adicionando relatório e README do projeto - Nicolas Melnik e Eduardo Marui 25/09/2024
+
+- Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
+- Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 */
 
 package GrafoMatriz;
+
+import java.text.Normalizer;
 
 public abstract class Grafo {
     protected int n; // quantidade de vértices
@@ -44,7 +52,7 @@ public abstract class Grafo {
 
     public int getIndexFromName(String name) {
         for(int i = 0; i < n; ++i) {
-            if(nomes[i].equals(name)) {return i;}
+            if(nomes[i].equalsIgnoreCase(name)) {return i;}
         }
 
         return -1;

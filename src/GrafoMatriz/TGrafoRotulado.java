@@ -12,6 +12,9 @@ Mudanças:
 - Garantir consistência dos métodos das classes dos grafos - Nicolas Melnik 13/09/2024
 - Adicionando mapeamento da europa no arquivo grafo.txt - Nicolas Melnik e Eduardo Marui 24/09/2024
 - Adicionando relatório e README do projeto - Nicolas Melnik e Eduardo Marui 25/09/2024
+
+- Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
+- Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 */
 
 package GrafoMatriz;
@@ -19,6 +22,7 @@ package GrafoMatriz;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -495,12 +499,11 @@ public class TGrafoRotulado extends Grafo {
                 if (!visitado[v] && adj[u][v] != Double.POSITIVE_INFINITY && dist[u] != Integer.MAX_VALUE && dist[u] + adj[u][v] < dist[v]) {
                     dist[v] = dist[u] + adj[u][v];
                     rota[v] = u;
-                    System.out.println();
                 }
             }
         }
 
-        printSolution(dist, rota, origem);
+        //printSolution(dist, rota, origem);
         return rota;
     }
 
@@ -534,15 +537,80 @@ public class TGrafoRotulado extends Grafo {
         System.out.print(" -> " + i);
     }
 
-    public void roteiro(String[] vet) {
-        List<String> nodes = new ArrayList<String>();
+    public TGrafoRotulado prim() {
+        TGrafoRotulado newGraph = new TGrafoRotulado(this.n);
+        int[] vet = new int[this.n];
+        int count = 0;
+        vet[0] = -1;
+
+        while(count <= this.n - 2) {
+            minVertice(vet, newGraph);
+            count++;
+        }
+
+        return newGraph;
+    }
+
+    private void minVertice(int[] vet, TGrafoRotulado graph) {
+        int a = -1, b = -1;
+        boolean placeholder = true;
+
+        for(int i = 0; i < this.n; ++i) {
+            if(vet[i] == -1 && placeholder) {
+                for(int j = 0; j < this.n; ++j) {
+                    if(graph.degree(j) == 0 && adj[i][j] != Double.POSITIVE_INFINITY) {
+                        a = i;
+                        b = j;
+                        placeholder = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        for(int i = a; i < this.n; ++i) {
+            if(vet[i] == -1) {
+                for(int j = 0; j < this.n; ++j) {
+                    if(adj[i][j] < adj[a][b] && graph.degree(j) == 0) {
+                        a = i;
+                        b = j;
+                    }
+                }
+            }
+        }
+
+        graph.insereA(a, b, adj[a][b]);
+        vet[b] = -1;
+    }
+
+    public TGrafoRotulado roteiro(String[] vet) {
+        List<String> nodes = new ArrayList<>();
 
         for(int i = 0; i < vet.length; ++i) {
             int[] rota = dijkstra(getIndexFromName(vet[i]));
-
-
+            for(int j = 0; j < vet.length; ++j) {
+                if(i != j) {
+                    nodes = roteiroAux(nodes, rota, getIndexFromName(vet[j]));
+                }
+            }
         }
 
+        TGrafoRotulado newGraph = roteiroSubgrafo(nodes).prim();
+        newGraph.setNomes(nodes.toArray(new String[0]));
+        int count = 0;
+
+        while(!hasPath(newGraph) && count < 100) {
+            Collections.shuffle(nodes);
+
+            newGraph = roteiroSubgrafo(nodes).prim();
+            newGraph.setNomes(nodes.toArray(new String[0]));
+            ++count;
+        }
+
+        printRoteiro(newGraph);
+
+
+        return newGraph;
     }
 
     private List<String> roteiroAux(List<String> nodes, int[] rota, int i) {
@@ -554,6 +622,56 @@ public class TGrafoRotulado extends Grafo {
             return nodes;
         }
 
+        if(!nodes.contains(getNameFromIndex(i))) {
+            nodes.add(getNameFromIndex(i));
+        }
+        nodes = roteiroAux(nodes, rota, rota[i]);
+        return nodes;
+    }
 
+    private TGrafoRotulado roteiroSubgrafo(List<String> nodes) {
+        TGrafoRotulado newGraph = new TGrafoRotulado(nodes.size());
+        newGraph.setNomes((nodes.toArray(new String[0])));
+
+        for(int i = 0; i < nodes.size(); ++i) {
+            for(int j = 0; j < nodes.size(); ++j) {
+                if(this.adj[getIndexFromName(nodes.get(i))][getIndexFromName(nodes.get(j))] != Double.POSITIVE_INFINITY) {
+                    newGraph.insereA(i, j, this.adj[getIndexFromName(nodes.get(i))][getIndexFromName(nodes.get(j))]);
+                }
+            }
+        }
+
+        return newGraph;
+    }
+
+    private void printRoteiro(TGrafoRotulado graph) {
+        int i = 0;
+        String[] nomes = graph.getNomes();
+        double distancia = 0.0;
+        System.out.print("\n" + nomes[i]);
+
+        while(i != -1) {
+            for(int j = 0; j < graph.getN(); ++j) {
+                if(graph.adj[i][j] != Double.POSITIVE_INFINITY) {
+                    System.out.print(" -> " + nomes[j]);
+                    distancia += graph.adj[i][j];
+
+                    i = j;
+                    j = -1;
+                }
+            }
+
+            i = -1;
+        }
+
+        System.out.println("\nDistância: " + distancia + "\n");
+    }
+
+    private boolean hasPath(TGrafoRotulado graph) {
+        for(int i = 0; i < graph.getN(); ++i) {
+            if(graph.outDegree(i) > 1) {return false;}
+        }
+
+        return true;
     }
 }

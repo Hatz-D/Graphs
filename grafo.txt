@@ -1,55 +1,55 @@
 6
 50
-0 "Albânia"
-1 "Alemanha"
-2 "Andorra"
-3 "Armênia"
-4 "Áustria"
-5 "Azerbaijão"
-6 "Bélgica"
-7 "Bielorrússia"
-8 "Bósnia-Herzegovina"
-9 "Bulgária"
-10 "Cazaquistão"
-11 "Chipre"
-12 "Croácia"
-13 "Dinamarca"
-14 "Eslováquia"
-15 "Eslovênia"
-16 "Espanha"
-17 "Estônia"
-18 "Finlândia"
-19 "França"
-20 "Geórgia"
-21 "Grécia"
-22 "Hungria"
-23 "Irlanda"
-24 "Islândia"
-25 "Itália"
-26 "Letônia"
-27 "Lituânia"
-28 "Liechtenstein"
-29 "Luxemburgo"
-30 "Macedônia do Norte"
-31 "Malta"
-32 "Moldávia"
-33 "Mônaco"
-34 "Montenegro"
-35 "Noruega"
-36 "Países Baixos"
-37 "Polônia"
-38 "Portugal"
-39 "Reino Unido"
-40 "Romênia"
-41 "Rússia"
-42 "San Marino"
-43 "Sérvia"
-44 "Suécia"
-45 "Suíça"
-46 "Tchéquia"
-47 "Turquia"
-48 "Ucrânia"
-49 "Vaticano"
+0 Albânia
+1 Alemanha
+2 Andorra
+3 Armênia
+4 Áustria
+5 Azerbaijão
+6 Bélgica
+7 Bielorrússia
+8 Bósnia-Herzegovina
+9 Bulgária
+10 Cazaquistão
+11 Chipre
+12 Croácia
+13 Dinamarca
+14 Eslováquia
+15 Eslovênia
+16 Espanha
+17 Estônia
+18 Finlândia
+19 França
+20 Geórgia
+21 Grécia
+22 Hungria
+23 Irlanda
+24 Islândia
+25 Itália
+26 Letônia
+27 Lituânia
+28 Liechtenstein
+29 Luxemburgo
+30 Macedônia do Norte
+31 Malta
+32 Moldávia
+33 Mônaco
+34 Montenegro
+35 Noruega
+36 Países Baixos
+37 Polônia
+38 Portugal
+39 Reino Unido
+40 Romênia
+41 Rússia
+42 San Marino
+43 Sérvia
+44 Suécia
+45 Suíça
+46 Tchéquia
+47 Turquia
+48 Ucrânia
+49 Vaticano
 192
 0 34 158
 0 43 603

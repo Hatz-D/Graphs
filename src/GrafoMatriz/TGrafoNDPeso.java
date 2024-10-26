@@ -3,7 +3,7 @@ Diogo Lourenzon Hatz     - RA: 10402406
 Eduardo Marui de Camargo - RA: 10400734
 Nicolas Fernandes Melnik - RA: 10402170
 
-Classe: Classe relativa ao grafo não direcionado com peso nos vértices
+Classe: Classe relativa ao grafo direcionado com peso nas arestas
 
 Mudanças:
 - Versão inicial da main da aplicação, como menu de opções - Diogo Hatz, 10/09/2024
@@ -12,6 +12,9 @@ Mudanças:
 - Garantir consistência dos métodos das classes dos grafos - Nicolas Melnik 13/09/2024
 - Adicionando mapeamento da europa no arquivo grafo.txt - Nicolas Melnik e Eduardo Marui 24/09/2024
 - Adicionando relatório e README do projeto - Nicolas Melnik e Eduardo Marui 25/09/2024
+
+- Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
+- Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 */
 
 package GrafoMatriz;
