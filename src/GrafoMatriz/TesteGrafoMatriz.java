@@ -15,6 +15,7 @@ Mudanças:
 
 - Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
 - Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
+- Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
 */
 
 package GrafoMatriz;
@@ -38,11 +39,12 @@ public class TesteGrafoMatriz {
 				"8. Mostrar grafo\n" +
 				"9. Apresentar a conexidade do grafo\n" +
 				"10. Roteiro de viagem\n" +
-				"11. Encerrar a aplicação\n";
+				"11. Coloração de vértices\n" +
+				"12. Encerrar a aplicação\n";
 
 		int opcao = -1;
 
-		while(opcao != 11) {
+		while(opcao != 12) {
 			System.out.print(menu + "\nInsira uma opção: ");
 			try{
 				opcao = Integer.parseInt(scanner.nextLine());
@@ -312,7 +314,22 @@ public class TesteGrafoMatriz {
 					}
 				}
 
-				case 11 -> {}
+				case 11 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
+					if(grafo instanceof TGrafoRotulado) {
+						((TGrafoRotulado) grafo).coloracaoClasse();
+					}
+
+					else {
+						System.out.println("\nNo momento o código só funciona para TGrafoRotulado :P");
+					}
+				}
+
+				case 12 -> {}
 
 				default -> System.out.println("\nOpção inválida inserida!");
 			}

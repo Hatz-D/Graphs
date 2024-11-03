@@ -15,6 +15,7 @@ Mudanças:
 
 - Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
 - Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
+- Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
 */
 
 package GrafoMatriz;
@@ -609,7 +610,6 @@ public class TGrafoRotulado extends Grafo {
 
         printRoteiro(newGraph);
 
-
         return newGraph;
     }
 
@@ -673,5 +673,48 @@ public class TGrafoRotulado extends Grafo {
         }
 
         return true;
+    }
+
+    public void coloracaoClasse() {
+        int[] vet = new int[this.n];
+        for(int i = 0; i < this.n; ++i) {vet[i] = -1;}
+
+        int k = 0;
+
+        boolean placeholder = true;
+
+        while(coloracaoAux(vet) != -1) {
+            int p = coloracaoAux(vet);
+            vet[p] = k;
+
+            for(int i = 0; i < this.n; ++i) {
+                if(i != p && this.adj[i][p] == Double.POSITIVE_INFINITY && vet[i] == -1) {
+                    for(int vizinhos = 0; vizinhos < this.n; ++vizinhos) {
+                        if (this.adj[i][vizinhos] != Double.POSITIVE_INFINITY && i != vizinhos && vet[vizinhos] == k) {
+                            placeholder = false;
+                            break;
+                        }
+                    }
+
+                    if(placeholder) {vet[i] = k;}
+                    placeholder = true;
+                }
+            }
+
+            ++k;
+        }
+
+        System.out.println("\nColoração dos vértices:");
+        for(int i = 0; i < this.n; ++i) {
+            System.out.println(nomes[i] + ": " + vet[i]);
+        }
+    }
+
+    private int coloracaoAux(int[] vet) {
+        for(int i = 0; i < this.n; ++i) {
+            if(vet[i] == -1) {return i;}
+        }
+
+        return -1;
     }
 }
