@@ -16,6 +16,7 @@ Mudanças:
 - Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
 - Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 - Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
+- Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
 */
 
 package GrafoMatriz;
@@ -40,11 +41,14 @@ public class TesteGrafoMatriz {
 				"9. Apresentar a conexidade do grafo\n" +
 				"10. Roteiro de viagem\n" +
 				"11. Coloração de vértices\n" +
-				"12. Encerrar a aplicação\n";
+				"12. Busca em profundidade\n" +
+				"13. Busca em largura\n" +
+				"14. Caminho minimo dijkstra\n" +
+				"15. Encerrar a aplicação\n";
 
 		int opcao = -1;
 
-		while(opcao != 12) {
+		while(opcao != 15) {
 			System.out.print(menu + "\nInsira uma opção: ");
 			try{
 				opcao = Integer.parseInt(scanner.nextLine());
@@ -329,7 +333,48 @@ public class TesteGrafoMatriz {
 					}
 				}
 
-				case 12 -> {}
+				case 12 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
+					grafo.profundidade();
+				}
+
+				case 13 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
+					grafo.largura();
+				}
+
+				case 14 -> {
+					if(grafo == null) {
+						System.out.println("\nAdicione um grafo com a opção 1!");
+						break;
+					}
+
+					if(grafo instanceof TGrafoRotulado) {
+						System.out.print("\nInsira o país inicial: ");
+						String pais = text.nextLine();
+
+						while(grafo.getIndexFromName(pais) == -1) {
+							System.out.println("\nPaís não encontrado! Insira novamente!\n\nInsira o país inicial: ");
+							pais = text.nextLine();
+						}
+
+						((TGrafoRotulado) grafo).dijkstra(grafo.getIndexFromName(pais), true);
+					}
+
+					else {
+						System.out.println("\nNo momento o código só funciona para TGrafoRotulado :P");
+					}
+				}
+
+				case 15 -> {}
 
 				default -> System.out.println("\nOpção inválida inserida!");
 			}

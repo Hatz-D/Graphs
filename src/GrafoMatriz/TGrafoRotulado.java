@@ -16,6 +16,7 @@ Mudanças:
 - Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
 - Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 - Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
+- Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
 */
 
 package GrafoMatriz;
@@ -435,6 +436,7 @@ public class TGrafoRotulado extends Grafo {
                     vet[m] = 1;
                     pilha.push(n);
                     n = m;
+                    m = -1;
                 }
             }
         }
@@ -481,7 +483,7 @@ public class TGrafoRotulado extends Grafo {
         this.nomes = newNomes;
     }
 
-    public int[] dijkstra(int origem) {
+    public int[] dijkstra(int origem, boolean print) {
         double[] dist = new double[n];
         boolean[] visitado = new boolean[n];
         int[] rota = new int[n];
@@ -504,7 +506,8 @@ public class TGrafoRotulado extends Grafo {
             }
         }
 
-        //printSolution(dist, rota, origem);
+        if(print) {printSolution(dist, rota, origem);}
+
         return rota;
     }
 
@@ -523,9 +526,17 @@ public class TGrafoRotulado extends Grafo {
     private void printSolution(double[] dist, int[] rota, int origem) {
         System.out.println("Vértice\t Distância da Origem\t Rota");
         for (int i = 0; i < dist.length; i++) {
-            System.out.print(i + "\t\t " + dist[i] + "\t\t\t\t\t");
-            printPath(i, rota);
-            System.out.println();
+            if(dist[i] != Integer.MAX_VALUE) {
+                System.out.print(i + "\t\t " + dist[i] + "\t\t\t\t\t");
+                printPath(i, rota);
+                System.out.println();
+            }
+
+            else {
+                System.out.print(i + "\t\t " + null + "\t\t\t\t\t");
+                printPath(i, rota);
+                System.out.println();
+            }
         }
     }
 
@@ -588,7 +599,7 @@ public class TGrafoRotulado extends Grafo {
         List<String> nodes = new ArrayList<>();
 
         for(int i = 0; i < vet.length; ++i) {
-            int[] rota = dijkstra(getIndexFromName(vet[i]));
+            int[] rota = dijkstra(getIndexFromName(vet[i]), false);
             for(int j = 0; j < vet.length; ++j) {
                 if(i != j) {
                     nodes = roteiroAux(nodes, rota, getIndexFromName(vet[j]));

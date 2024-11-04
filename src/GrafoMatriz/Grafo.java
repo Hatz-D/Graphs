@@ -16,6 +16,7 @@ Mudanças:
 - Adicionando função relativa ao roteiro de viagem e suas funções auxiliares - Diogo Hatz, 26/10/2024
 - Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 - Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
+- Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
 */
 
 package GrafoMatriz;
@@ -78,4 +79,8 @@ public abstract class Grafo {
     public void removeA(int v1, int v2) {}
 
     public int conectividadade() {return -1;}
+
+    public void profundidade() {}
+
+    public void largura() {}
 }
