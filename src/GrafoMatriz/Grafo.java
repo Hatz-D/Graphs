@@ -18,6 +18,7 @@ Mudanças:
 - Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
 - Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
 - Arrumando uma aresta no arquivo grafo.txt - Nicolas Melnik 10/11/2024
+- Correção do Título do projeto - Nicolas Melnik 10/11/2024
 */
 
 package GrafoMatriz;
