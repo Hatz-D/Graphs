@@ -17,6 +17,7 @@ Mudanças:
 - Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 - Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
 - Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
+- Arrumando uma aresta no arquivo grafo.txt - Nicolas Melnik 10/11/2024
 */
 
 package GrafoMatriz;
@@ -53,34 +54,50 @@ public abstract class Grafo {
     }
 
     public int getIndexFromName(String name) {
-        for(int i = 0; i < n; ++i) {
-            if(nomes[i].equalsIgnoreCase(name)) {return i;}
+        for (int i = 0; i < n; ++i) {
+            if (nomes[i].equalsIgnoreCase(name)) {
+                return i;
+            }
         }
 
         return -1;
     }
 
-    public String getNameFromIndex(int i) {return nomes[i];}
+    public String getNameFromIndex(int i) {
+        return nomes[i];
+    }
 
-    public void show() {}
+    public void show() {
+    }
 
-    public void insereV() {}
+    public void insereV() {
+    }
 
-    public void insereV(String nome) {}
+    public void insereV(String nome) {
+    }
 
-    public void insereV(double peso, String nome) {}
+    public void insereV(double peso, String nome) {
+    }
 
-    public void removeV(int v) {}
+    public void removeV(int v) {
+    }
 
-    public void insereA(int v1, int v2) {}
+    public void insereA(int v1, int v2) {
+    }
 
-    public void insereA(int v1, int v2, double peso) {}
+    public void insereA(int v1, int v2, double peso) {
+    }
 
-    public void removeA(int v1, int v2) {}
+    public void removeA(int v1, int v2) {
+    }
 
-    public int conectividadade() {return -1;}
+    public int conectividadade() {
+        return -1;
+    }
 
-    public void profundidade() {}
+    public void profundidade() {
+    }
 
-    public void largura() {}
+    public void largura() {
+    }
 }

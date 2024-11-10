@@ -17,6 +17,7 @@ Mudanças:
 - Modificando estrutura do arquivo 'grafo.txt' - Diogo Hatz, 26/10/2024
 - Adicionando coloração ao código - Nicolas Melnik, 03/11/2024
 - Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
+- Arrumando uma aresta no arquivo grafo.txt - Nicolas Melnik 10/11/2024
 */
 
 package GrafoMatriz;
@@ -499,14 +500,17 @@ public class TGrafoRotulado extends Grafo {
             int u = minDistance(dist, visitado);
             visitado[u] = true;
             for (int v = 0; v < n; v++) {
-                if (!visitado[v] && adj[u][v] != Double.POSITIVE_INFINITY && dist[u] != Integer.MAX_VALUE && dist[u] + adj[u][v] < dist[v]) {
+                if (!visitado[v] && adj[u][v] != Double.POSITIVE_INFINITY && dist[u] != Integer.MAX_VALUE
+                        && dist[u] + adj[u][v] < dist[v]) {
                     dist[v] = dist[u] + adj[u][v];
                     rota[v] = u;
                 }
             }
         }
 
-        if(print) {printSolution(dist, rota, origem);}
+        if (print) {
+            printSolution(dist, rota, origem);
+        }
 
         return rota;
     }
@@ -526,7 +530,7 @@ public class TGrafoRotulado extends Grafo {
     private void printSolution(double[] dist, int[] rota, int origem) {
         System.out.println("Vértice\t Distância da Origem\t Rota");
         for (int i = 0; i < dist.length; i++) {
-            if(dist[i] != Integer.MAX_VALUE) {
+            if (dist[i] != Integer.MAX_VALUE) {
                 System.out.print(i + "\t\t " + dist[i] + "\t\t\t\t\t");
                 printPath(i, rota);
                 System.out.println();
@@ -555,7 +559,7 @@ public class TGrafoRotulado extends Grafo {
         int count = 0;
         vet[0] = -1;
 
-        while(count <= this.n - 2) {
+        while (count <= this.n - 2) {
             minVertice(vet, newGraph);
             count++;
         }
@@ -567,10 +571,10 @@ public class TGrafoRotulado extends Grafo {
         int a = -1, b = -1;
         boolean placeholder = true;
 
-        for(int i = 0; i < this.n; ++i) {
-            if(vet[i] == -1 && placeholder) {
-                for(int j = 0; j < this.n; ++j) {
-                    if(graph.degree(j) == 0 && adj[i][j] != Double.POSITIVE_INFINITY) {
+        for (int i = 0; i < this.n; ++i) {
+            if (vet[i] == -1 && placeholder) {
+                for (int j = 0; j < this.n; ++j) {
+                    if (graph.degree(j) == 0 && adj[i][j] != Double.POSITIVE_INFINITY) {
                         a = i;
                         b = j;
                         placeholder = false;
@@ -580,10 +584,10 @@ public class TGrafoRotulado extends Grafo {
             }
         }
 
-        for(int i = a; i < this.n; ++i) {
-            if(vet[i] == -1) {
-                for(int j = 0; j < this.n; ++j) {
-                    if(adj[i][j] < adj[a][b] && graph.degree(j) == 0) {
+        for (int i = a; i < this.n; ++i) {
+            if (vet[i] == -1) {
+                for (int j = 0; j < this.n; ++j) {
+                    if (adj[i][j] < adj[a][b] && graph.degree(j) == 0) {
                         a = i;
                         b = j;
                     }
@@ -598,10 +602,10 @@ public class TGrafoRotulado extends Grafo {
     public TGrafoRotulado roteiro(String[] vet) {
         List<String> nodes = new ArrayList<>();
 
-        for(int i = 0; i < vet.length; ++i) {
+        for (int i = 0; i < vet.length; ++i) {
             int[] rota = dijkstra(getIndexFromName(vet[i]), false);
-            for(int j = 0; j < vet.length; ++j) {
-                if(i != j) {
+            for (int j = 0; j < vet.length; ++j) {
+                if (i != j) {
                     nodes = roteiroAux(nodes, rota, getIndexFromName(vet[j]));
                 }
             }
@@ -611,7 +615,7 @@ public class TGrafoRotulado extends Grafo {
         newGraph.setNomes(nodes.toArray(new String[0]));
         int count = 0;
 
-        while(!hasPath(newGraph) && count < 100) {
+        while (!hasPath(newGraph) && count < 100) {
             Collections.shuffle(nodes);
 
             newGraph = roteiroSubgrafo(nodes).prim();
@@ -625,15 +629,15 @@ public class TGrafoRotulado extends Grafo {
     }
 
     private List<String> roteiroAux(List<String> nodes, int[] rota, int i) {
-        if(rota[i] == -1) {
-            if(!nodes.contains(getNameFromIndex(i))) {
+        if (rota[i] == -1) {
+            if (!nodes.contains(getNameFromIndex(i))) {
                 nodes.add(getNameFromIndex(i));
             }
 
             return nodes;
         }
 
-        if(!nodes.contains(getNameFromIndex(i))) {
+        if (!nodes.contains(getNameFromIndex(i))) {
             nodes.add(getNameFromIndex(i));
         }
         nodes = roteiroAux(nodes, rota, rota[i]);
@@ -644,9 +648,10 @@ public class TGrafoRotulado extends Grafo {
         TGrafoRotulado newGraph = new TGrafoRotulado(nodes.size());
         newGraph.setNomes((nodes.toArray(new String[0])));
 
-        for(int i = 0; i < nodes.size(); ++i) {
-            for(int j = 0; j < nodes.size(); ++j) {
-                if(this.adj[getIndexFromName(nodes.get(i))][getIndexFromName(nodes.get(j))] != Double.POSITIVE_INFINITY) {
+        for (int i = 0; i < nodes.size(); ++i) {
+            for (int j = 0; j < nodes.size(); ++j) {
+                if (this.adj[getIndexFromName(nodes.get(i))][getIndexFromName(
+                        nodes.get(j))] != Double.POSITIVE_INFINITY) {
                     newGraph.insereA(i, j, this.adj[getIndexFromName(nodes.get(i))][getIndexFromName(nodes.get(j))]);
                 }
             }
@@ -661,9 +666,9 @@ public class TGrafoRotulado extends Grafo {
         double distancia = 0.0;
         System.out.print("\n" + nomes[i]);
 
-        while(i != -1) {
-            for(int j = 0; j < graph.getN(); ++j) {
-                if(graph.adj[i][j] != Double.POSITIVE_INFINITY) {
+        while (i != -1) {
+            for (int j = 0; j < graph.getN(); ++j) {
+                if (graph.adj[i][j] != Double.POSITIVE_INFINITY) {
                     System.out.print(" -> " + nomes[j]);
                     distancia += graph.adj[i][j];
 
@@ -679,8 +684,10 @@ public class TGrafoRotulado extends Grafo {
     }
 
     private boolean hasPath(TGrafoRotulado graph) {
-        for(int i = 0; i < graph.getN(); ++i) {
-            if(graph.outDegree(i) > 1) {return false;}
+        for (int i = 0; i < graph.getN(); ++i) {
+            if (graph.outDegree(i) > 1) {
+                return false;
+            }
         }
 
         return true;
@@ -688,26 +695,30 @@ public class TGrafoRotulado extends Grafo {
 
     public void coloracaoClasse() {
         int[] vet = new int[this.n];
-        for(int i = 0; i < this.n; ++i) {vet[i] = -1;}
+        for (int i = 0; i < this.n; ++i) {
+            vet[i] = -1;
+        }
 
         int k = 0;
 
         boolean placeholder = true;
 
-        while(coloracaoAux(vet) != -1) {
+        while (coloracaoAux(vet) != -1) {
             int p = coloracaoAux(vet);
             vet[p] = k;
 
-            for(int i = 0; i < this.n; ++i) {
-                if(i != p && this.adj[i][p] == Double.POSITIVE_INFINITY && vet[i] == -1) {
-                    for(int vizinhos = 0; vizinhos < this.n; ++vizinhos) {
+            for (int i = 0; i < this.n; ++i) {
+                if (i != p && this.adj[i][p] == Double.POSITIVE_INFINITY && vet[i] == -1) {
+                    for (int vizinhos = 0; vizinhos < this.n; ++vizinhos) {
                         if (this.adj[i][vizinhos] != Double.POSITIVE_INFINITY && i != vizinhos && vet[vizinhos] == k) {
                             placeholder = false;
                             break;
                         }
                     }
 
-                    if(placeholder) {vet[i] = k;}
+                    if (placeholder) {
+                        vet[i] = k;
+                    }
                     placeholder = true;
                 }
             }
@@ -716,14 +727,16 @@ public class TGrafoRotulado extends Grafo {
         }
 
         System.out.println("\nColoração dos vértices:");
-        for(int i = 0; i < this.n; ++i) {
+        for (int i = 0; i < this.n; ++i) {
             System.out.println(nomes[i] + ": " + vet[i]);
         }
     }
 
     private int coloracaoAux(int[] vet) {
-        for(int i = 0; i < this.n; ++i) {
-            if(vet[i] == -1) {return i;}
+        for (int i = 0; i < this.n; ++i) {
+            if (vet[i] == -1) {
+                return i;
+            }
         }
 
         return -1;
