@@ -19,6 +19,7 @@ Mudanças:
 - Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
 - Arrumando uma aresta no arquivo grafo.txt - Nicolas Melnik 10/11/2024
 - Correção do Título do projeto - Nicolas Melnik 10/11/2024
+- Modificação das funções de percurso em largura e profundidade - Eduardo Marui 14/11/2024
 */
 
 package GrafoMatriz;
@@ -31,7 +32,7 @@ public class TesteGrafoMatriz {
 		Scanner scanner = new Scanner(System.in);
 		Scanner text = new Scanner(System.in);
 		Grafo grafo = null;
-		String menu = "\nRoteiro de Viagens - Capitais Europeias de Carro" +
+		String menu = "\n\nRoteiro de Viagens - Capitais Europeias de Carro" +
 				"\n---------------------------------------------------------\n\n" +
 				"1. Ler dados do arquivo\n" +
 				"2. Gravar dados no arquivo\n" +
@@ -354,7 +355,15 @@ public class TesteGrafoMatriz {
 						break;
 					}
 
-					grafo.profundidade();
+					System.out.print("\nInsira o país inicial: ");
+					String pais = text.nextLine();
+
+					while (grafo.getIndexFromName(pais) == -1) {
+						System.out.println("\nPaís não encontrado! Insira novamente!\n\nInsira o país inicial: ");
+						pais = text.nextLine();
+					}
+
+					grafo.profundidade(grafo.getIndexFromName(pais));
 				}
 
 				case 13 -> {
@@ -363,7 +372,15 @@ public class TesteGrafoMatriz {
 						break;
 					}
 
-					grafo.largura();
+					System.out.print("\nInsira o país inicial: ");
+					String pais = text.nextLine();
+
+					while (grafo.getIndexFromName(pais) == -1) {
+						System.out.println("\nPaís não encontrado! Insira novamente!\n\nInsira o país inicial: ");
+						pais = text.nextLine();
+					}
+
+					grafo.largura(grafo.getIndexFromName(pais));
 				}
 
 				case 14 -> {

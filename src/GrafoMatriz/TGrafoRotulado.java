@@ -19,6 +19,7 @@ Mudanças:
 - Adicionando busca em profundidade, busca em largura e caminho minimo de dijkstra - Diogo Hatz, 04/11/2024
 - Arrumando uma aresta no arquivo grafo.txt - Nicolas Melnik 10/11/2024
 - Correção do Título do projeto - Nicolas Melnik 10/11/2024
+- Modificação das funções de percurso em largura e profundidade - Eduardo Marui 14/11/2024
 */
 
 package GrafoMatriz;
@@ -423,18 +424,17 @@ public class TGrafoRotulado extends Grafo {
         return grafo;
     }
 
-    public void profundidade() {
+    public void profundidade(int n) {
         Pilha pilha = new Pilha();
         int[] vet = new int[adj.length];
-        int n = 0;
-        System.out.print("\nPercurso em profundidade: " + n);
+        System.out.print("\nPercurso em profundidade: " + getNameFromIndex(n));
         vet[n] = 1;
         pilha.push(n);
         while (!pilha.isEmpty()) {
             n = pilha.pop();
             for (int m = 0; m < adj.length; ++m) {
                 if (adj[n][m] != Double.POSITIVE_INFINITY && vet[m] == 0) {
-                    System.out.print(" " + m);
+                    System.out.print(" " + getNameFromIndex(m));
                     vet[m] = 1;
                     pilha.push(n);
                     n = m;
@@ -444,18 +444,17 @@ public class TGrafoRotulado extends Grafo {
         }
     }
 
-    public void largura() {
+    public void largura(int n) {
         FilaCircular fila = new FilaCircular();
         int[] vet = new int[adj.length];
-        int n = 0;
-        System.out.print("\nPercurso em largura: " + n);
+        System.out.print("\nPercurso em largura: " + getNameFromIndex(n));
         vet[n] = 1;
         fila.enqueue(n);
         while (!fila.qIsEmpty()) {
             n = fila.dequeue();
             for (int m = 0; m < adj.length; ++m) {
                 if (adj[n][m] != Double.POSITIVE_INFINITY && vet[m] == 0) {
-                    System.out.print(" " + m);
+                    System.out.print(" " + getNameFromIndex(m));
                     vet[m] = 1;
                     fila.enqueue(m);
                 }
@@ -532,13 +531,13 @@ public class TGrafoRotulado extends Grafo {
         System.out.println("Vértice\t Distância da Origem\t Rota");
         for (int i = 0; i < dist.length; i++) {
             if (dist[i] != Integer.MAX_VALUE) {
-                System.out.print(i + "\t\t " + dist[i] + "\t\t\t\t\t");
+                System.out.print(getNameFromIndex(i) + "\t\t\t " + dist[i] + "\t\t\t\t\t");
                 printPath(i, rota);
                 System.out.println();
             }
 
             else {
-                System.out.print(i + "\t\t " + null + "\t\t\t\t\t");
+                System.out.print(getNameFromIndex(i) + "\t\t\t " + null + "\t\t\t\t\t");
                 printPath(i, rota);
                 System.out.println();
             }

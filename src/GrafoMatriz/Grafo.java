@@ -96,9 +96,9 @@ public abstract class Grafo {
         return -1;
     }
 
-    public void profundidade() {
+    public void profundidade(int n) {
     }
 
-    public void largura() {
+    public void largura(int n) {
     }
 }
