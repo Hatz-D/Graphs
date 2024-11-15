@@ -44,15 +44,14 @@ public class TesteGrafoMatriz {
 				"8. Mostrar grafo\n" +
 				"9. Apresentar a conexidade do grafo\n" +
 				"10. Roteiro de viagem\n" +
-				"11. Coloração de vértices\n" +
-				"12. Busca em profundidade\n" +
-				"13. Busca em largura\n" +
-				"14. Caminho minimo dijkstra\n" +
-				"15. Encerrar a aplicação\n";
+				"11. Busca em profundidade\n" +
+				"12. Busca em largura\n" +
+				"13. Caminho minimo dijkstra\n" +
+				"14. Encerrar a aplicação\n";
 
 		int opcao = -1;
 
-		while (opcao != 15) {
+		while (opcao != 14) {
 			System.out.print(menu + "\nInsira uma opção: ");
 			try {
 				opcao = Integer.parseInt(scanner.nextLine());
@@ -340,13 +339,15 @@ public class TesteGrafoMatriz {
 						break;
 					}
 
-					if (grafo instanceof TGrafoRotulado) {
-						((TGrafoRotulado) grafo).coloracaoClasse();
+					System.out.print("\nInsira o país inicial: ");
+					String pais = text.nextLine();
+
+					while (grafo.getIndexFromName(pais) == -1) {
+						System.out.println("\nPaís não encontrado! Insira novamente!\n\nInsira o país inicial: ");
+						pais = text.nextLine();
 					}
 
-					else {
-						System.out.println("\nNo momento o código só funciona para TGrafoRotulado :P");
-					}
+					grafo.profundidade(grafo.getIndexFromName(pais));
 				}
 
 				case 12 -> {
@@ -363,27 +364,10 @@ public class TesteGrafoMatriz {
 						pais = text.nextLine();
 					}
 
-					grafo.profundidade(grafo.getIndexFromName(pais));
-				}
-
-				case 13 -> {
-					if (grafo == null) {
-						System.out.println("\nAdicione um grafo com a opção 1!");
-						break;
-					}
-
-					System.out.print("\nInsira o país inicial: ");
-					String pais = text.nextLine();
-
-					while (grafo.getIndexFromName(pais) == -1) {
-						System.out.println("\nPaís não encontrado! Insira novamente!\n\nInsira o país inicial: ");
-						pais = text.nextLine();
-					}
-
 					grafo.largura(grafo.getIndexFromName(pais));
 				}
 
-				case 14 -> {
+				case 13 -> {
 					if (grafo == null) {
 						System.out.println("\nAdicione um grafo com a opção 1!");
 						break;
@@ -406,7 +390,7 @@ public class TesteGrafoMatriz {
 					}
 				}
 
-				case 15 -> {
+				case 14 -> {
 				}
 
 				default -> System.out.println("\nOpção inválida inserida!");
